@@ -11,8 +11,7 @@ ratingPercentage = () => {
 
   fetch(url, {
     credentials: 'include',
-    headers: headers,
-    method: 'GET'
+    headers: headers
   })
     .then(function(data){
       console.log(data.json);
