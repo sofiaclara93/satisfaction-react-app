@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Rating from './Rating/rating';
+import Comments from './Comments/comments';
 import './App.css';
 
 
@@ -31,10 +32,17 @@ class App extends Component {
     )
   }
 
+  renderComments(){
+    return (
+      <Comments />
+    )
+  }
+
   render() {
     return (
       <div className="App">
         {this.renderRating()}
+        {this.renderComments()}
       </div>
     );
   }

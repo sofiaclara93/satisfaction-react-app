@@ -7,7 +7,8 @@ ratingPercentage = () => {
 
   let headers = new Headers();
 
-  headers.append('Authorization', 'Basic ' + process.env.ZENDESK_KEY);
+  // headers.append('Authorization', 'Basic ' + process.env.ZENDESK_KEY);
+  headers.append('Authorization', 'Basic ' + 'c29maWFAY2hhcnRiZWF0LmNvbTpjaGFydGJlYXR0ZXN0');
 
   fetch(url, {
     credentials: 'include',
