@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Rating from './Rating/rating';
 import Comments from './Comments/comments';
+import Benchmarks from './Benchmarks/benchmarks';
+
 import './App.css';
 
 
@@ -38,11 +40,18 @@ class App extends Component {
     )
   }
 
+  renderBenchmarks(){
+    return (
+      <Benchmarks />
+    )
+  }
+
   render() {
     return (
       <div className="App">
         {this.renderRating()}
         {this.renderComments()}
+        {this.renderBenchmarks()}
       </div>
     );
   }
