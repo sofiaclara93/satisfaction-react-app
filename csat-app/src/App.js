@@ -1,27 +1,57 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Rating from './Rating/rating';
+import Comments from './Comments/comments';
+import Benchmarks from './Benchmarks/benchmarks';
+
 import './App.css';
 
+
 class App extends Component {
+
+  state = {
+      response: ''
+    };
+
+    componentDidMount() {
+      this.callApi()
+        .then(res => this.setState({ response: res.express }))
+        .catch(err => console.log(err));
+    }
+
+    callApi = async () => {
+      const response = await fetch('/');
+      const body = await response.json();
+
+      if (response.status !== 200) throw Error(body.message);
+
+      return body;
+    };
+
+  renderRating(){
+    return (
+      <Rating />
+    )
+  }
+
+  renderComments(){
+    return (
+      <Comments />
+    )
+  }
+
+  renderBenchmarks(){
+    return (
+      <Benchmarks />
+    )
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-      <div>
-
-      </div>
-      <div>
-
-      </div>
-      <div>
-        
+        {this.renderRating()}
+        {this.renderComments()}
+        {this.renderBenchmarks()}
       </div>
     );
   }
