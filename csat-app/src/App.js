@@ -16,6 +16,7 @@ class App extends Component {
     componentDidMount() {
       this.callApi()
         .then(res => this.setState({ response: res.express }))
+        // getting this catch
         .catch(err => console.log(err));
     }
 
@@ -31,19 +32,19 @@ class App extends Component {
   renderRating(){
     return (
       <Rating />
-    )
+    );
   }
 
   renderComments(){
     return (
       <Comments />
-    )
+    );
   }
 
   renderBenchmarks(){
     return (
       <Benchmarks />
-    )
+    );
   }
 
   render() {
