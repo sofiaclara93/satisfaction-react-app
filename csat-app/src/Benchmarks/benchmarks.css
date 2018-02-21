@@ -1,14 +1,14 @@
-.benchmarks-bar {
+/* .benchmarks-bar {
   height:100%;
   /* width:200px; */
-  position:fixed!important;
+  /* position:fixed!important;
   overflow:auto;
   flex: 0.5;
   padding-left: 1%;
   /* padding-bottom:%; */
-  padding-right: 3%;
+  /* padding-right: 3%;
   background-color: grey;
-}
+} */ */ */
 
 ul {
   list-style: none;

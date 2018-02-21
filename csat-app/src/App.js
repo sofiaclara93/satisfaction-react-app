@@ -50,9 +50,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.renderRating()}
-        {this.renderComments()}
-        {this.renderBenchmarks()}
+        <div class="row">
+          <div class="col s12 m4 l3">
+             {this.renderBenchmarks()}
+          </div>
+          <div class="col s12 m8 l9">
+            {this.renderRating()}
+            {this.renderComments()}
+          </div>
+        </div>
       </div>
     );
   }
