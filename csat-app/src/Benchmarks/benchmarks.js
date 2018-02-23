@@ -44,21 +44,6 @@ class Benchmarks extends Component {
             </p>
           </li>
         </ul>
-        <p>LLLLLL
-        lllll</p>
-        <p>LLLLLL
-        lllll</p>
-        <p>LLLLLL
-        lllll</p>
-        <p>LLLLLL
-        lllll</p>
-        <p>LLLLLL
-        lllll</p>
-        <p>LLLLLL
-        lllll</p>
-        <p>LLLLLL
-        lllll</p>
-
       </div>
     )
   }
