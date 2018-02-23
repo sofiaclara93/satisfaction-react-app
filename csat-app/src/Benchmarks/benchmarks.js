@@ -10,20 +10,16 @@ class Benchmarks extends Component {
       <h3 className="bench-header">Tickets Received</h3>
       <ul className="received-list">
         <li>
-          <div className="today">
-            Today
-          </div>
-          <div className="today-value">
+          <p className="today">Today</p>
+          <p className="today-value">
             #
-          </div>
+          </p>
         </li>
         <li>
-          <div className="30day">
-            30 days
-          </div>
-          <div className="30day-value">
+          <p className="thirtyday">30 Days</p>
+          <p className="thirtyday-value">
             #
-          </div>
+          </p>
         </li>
       </ul>
     </div>
@@ -36,22 +32,33 @@ class Benchmarks extends Component {
         <h3 className="bench-header">Tickets Solved</h3>
         <ul className="solved-list">
           <li>
-            <div className="today">
-              Today
-            </div>
-            <div className="today-value">
+            <p className="today">Today</p>
+            <p className="today-value">
               #
-            </div>
+            </p>
           </li>
           <li>
-            <div className="30day">
-              30 days
-            </div>
-            <div className="30day-value">
+            <p className="thirtyday">30 Days</p>
+            <p className="thirtyday-value">
               #
-            </div>
+            </p>
           </li>
         </ul>
+        <p>LLLLLL
+        lllll</p>
+        <p>LLLLLL
+        lllll</p>
+        <p>LLLLLL
+        lllll</p>
+        <p>LLLLLL
+        lllll</p>
+        <p>LLLLLL
+        lllll</p>
+        <p>LLLLLL
+        lllll</p>
+        <p>LLLLLL
+        lllll</p>
+
       </div>
     )
   }

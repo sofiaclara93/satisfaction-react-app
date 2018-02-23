@@ -51,10 +51,10 @@ class App extends Component {
     return (
       <div className="App">
         <div class="row">
-          <div class="col s12 m4 l3">
+          <div class="col s12 m4 l3 z-depth-2 center-align">
              {this.renderBenchmarks()}
           </div>
-          <div class="col s12 m8 l9">
+          <div class="col s12 m8 l9 center-align">
             {this.renderRating()}
             {this.renderComments()}
           </div>

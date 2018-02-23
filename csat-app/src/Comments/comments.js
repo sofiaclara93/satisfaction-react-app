@@ -32,7 +32,7 @@ class Comments extends Component {
 
   renderComments() {
     return(
-      <div>Testing Comments. Some can be really long and some can be short so keep it responsive</div>
+      <div>"The Support of Alicia was great. But I was still sad, that we didnt receive any information about the leave of Blake Liut and the new assigned account manager Krista. I assume this should be part of the service for your customers to keep them updated about changes which affects their contracts and support. Thanks a lot, Eman"</div>
       // this.getComments()
     );
   }

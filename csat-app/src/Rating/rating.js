@@ -42,30 +42,30 @@ renderRating() {
 renderSummary() {
   return(
     <div className="metrics-summary">
-      <ul>
+      <ul className="metrics-list">
         <li>
-          <div className="metric-score">
-            79
-          </div>
-          <div className="metric">
+          <p className="metric-score">
+            3000
+          </p>
+          <p className="metric">
             Good Ratings
-          </div>
+          </p>
         </li>
         <li>
-          <div className="metric-score">
+          <p className="metric-score">
             300
-          </div>
-          <div className="metric">
+          </p>
+          <p className="metric">
             Bad Ratings
-          </div>
+          </p>
         </li>
         <li>
-          <div className="metric-score">
+          <p className="metric-score">
             31%
-          </div>
-          <div className="metric">
+          </p>
+          <p className="metric">
             Response Rate
-          </div>
+          </p>
         </li>
       </ul>
     </div>
