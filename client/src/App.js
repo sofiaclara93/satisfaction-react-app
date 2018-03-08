@@ -23,6 +23,13 @@ class App extends Component {
         return response.json();
       })
       .then(responseJson => {
+        var comments = [];
+        for(var i = 0; i < responseJson.satisfaction_ratings.length; i++) {
+          if(responseJson.satisfaction_ratings[i].comment != null) {
+            comments.push(responseJson.satisfaction_ratings[i].comment);
+          };
+        }
+        console.log(comments);
         this.setState({
           goodRatings: responseJson.count
         });
