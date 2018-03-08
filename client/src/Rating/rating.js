@@ -3,14 +3,13 @@ import './rating.css';
 
 class Rating extends Component {
 
-
 // create function that gets percentage based on good/total
 
 renderRating() {
   return(
     <div className="sat-percentage">
       <h3>Customer Satisfaction</h3>
-      <div className="score">100%{this.ratingPercentage}</div>
+      <div className="score">100%</div>
     </div>
   );
 }
@@ -29,7 +28,7 @@ renderSummary() {
         </li>
         <li>
           <p className="metric-score">
-            300
+            {this.props.badRating}
           </p>
           <p className="metric">
             Bad Ratings
@@ -37,7 +36,7 @@ renderSummary() {
         </li>
         <li>
           <p className="metric-score">
-            31%
+            {this.props.responseRate}
           </p>
           <p className="metric">
             Response Rate

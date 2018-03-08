@@ -10,7 +10,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      goodRatings: ["test"]
+      goodRatings: ["0"],
+      badRatings: ["0"],
+      totalSurveysSent: ["0"]
     }
   }
 
@@ -30,10 +32,56 @@ class App extends Component {
       });
   }
 
+  getBadRatings = () => {
+    fetch('/bad-sat')
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        this.setState({
+          badRatings: responseJson.count
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  getTotalSurvey = () => {
+    fetch('/total-survey')
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        this.setState({
+          totalSurveysSent: responseJson.count
+        });
+
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  getResponseRate = () => {
+    var totalReceived = Number(this.state.goodRatings) + Number(this.state.badRatings);
+    var responseRate = Math.round((totalReceived / Number(this.state.totalSurveysSent)) * 100);
+    var rate = responseRate.toString() + "%";
+    return rate;
+  }
+
+
   renderRating(){
+    this.getGoodRatings();
+    this.getBadRatings();
+    this.getTotalSurvey();
+    var responseRate = this.getResponseRate();
+
     return (
       <Rating
-        goodRating={this.state.getGoodRatings}
+        goodRating={this.state.goodRatings}
+        badRating={this.state.badRatings}
+        responseRate={responseRate}
       />
     );
   }
@@ -66,14 +114,5 @@ class App extends Component {
     );
   }
 }
-  // render() {
-  //   return (
-  //     <div className="App">
-  //       <h1>Users</h1>
-  //       {this.state.goodCount}
-  //     </div>
-  //   );
-  // }
-
 
 export default App;
