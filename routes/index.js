@@ -20,7 +20,7 @@ const badOptions = {
 };
 
 const totalSurvey = {
-    url: 'https://chartbeat.zendesk.com/api/v2/satisfaction_ratings.json?start_time=1514764800',
+    url: 'https://chartbeat.zendesk.com/api/v2/satisfaction_ratings.json?page=1&score=offered&start_time=1514764800',
     method: 'GET',
     headers: {
         "Authorization": auth,
