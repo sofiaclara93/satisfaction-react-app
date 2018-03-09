@@ -10,28 +10,35 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      goodRatings: ["0"],
-      badRatings: ["0"],
-      totalSurveysSent: ["0"]
+      goodRatings: "0",
+      badRatings: "0",
+      responseRate: "0",
+      score: "0",
+      thirtyDaysSolved: "0",
+      thirtyDaysReceived: "0",
+      todayReceived: "0"
     }
   }
 
 
   getGoodRatings = () => {
-    fetch('/good-sat')
+    fetch('/benchmarks')
       .then(response => {
         return response.json();
       })
       .then(responseJson => {
-        var comments = [];
-        for(var i = 0; i < responseJson.satisfaction_ratings.length; i++) {
-          if(responseJson.satisfaction_ratings[i].comment != null) {
-            comments.push(responseJson.satisfaction_ratings[i].comment);
-          };
-        }
-        console.log(comments);
+        // var comments = [];
+        // for(var i = 0; i < responseJson.satisfaction_ratings.length; i++) {
+        //   if(responseJson.satisfaction_ratings[i].comment != null) {
+        //     comments.push(responseJson.satisfaction_ratings[i].comment);
+        //   };
+        // }
+        // console.log(comments);
         this.setState({
-          goodRatings: responseJson.count
+          goodRatings: responseJson.statistics.good_ratings,
+          badRatings: responseJson.statistics.bad_ratings,
+          responseRate: responseJson.statistics.response_rate,
+          score: responseJson.statistics.score
         });
       })
       .catch(err => {
@@ -39,14 +46,15 @@ class App extends Component {
       });
   }
 
-  getBadRatings = () => {
-    fetch('/bad-sat')
+  getThirtyDaysReceived = () => {
+    fetch('/thirty-days-received')
       .then(response => {
         return response.json();
       })
       .then(responseJson => {
+        debugger;
         this.setState({
-          badRatings: responseJson.count
+          thirtyDaysReceived: responseJson
         });
       })
       .catch(err => {
@@ -54,41 +62,47 @@ class App extends Component {
       });
   }
 
-  getTotalSurvey = () => {
-    fetch('/total-survey')
+  getThirtyDaysSolved = () => {
+    fetch('/thirty-days-solved')
       .then(response => {
         return response.json();
       })
       .then(responseJson => {
         this.setState({
-          totalSurveysSent: responseJson.count
+          thirtyDaysSolved: responseJson
         });
-
       })
       .catch(err => {
         console.error(err);
       });
   }
 
-  getResponseRate = () => {
-    var totalReceived = Number(this.state.goodRatings) + Number(this.state.badRatings);
-    var responseRate = Math.round((totalReceived / Number(this.state.totalSurveysSent)) * 100);
-    var rate = responseRate.toString() + "%";
-    return rate;
+  getTodayReceived = () => {
+    fetch('/today-received')
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        debugger;
+        this.setState({
+          todayReceived: responseJson
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
 
   renderRating(){
     this.getGoodRatings();
-    this.getBadRatings();
-    this.getTotalSurvey();
-    var responseRate = this.getResponseRate();
 
     return (
       <Rating
         goodRating={this.state.goodRatings}
         badRating={this.state.badRatings}
-        responseRate={responseRate}
+        responseRate={this.state.responseRate}
+        score={this.state.score}
       />
     );
   }
@@ -100,8 +114,15 @@ class App extends Component {
   }
 
   renderBenchmarks(){
+    this.getThirtyDaysSolved();
+    this.getThirtyDaysReceived();
+    this.getTodayReceived();
     return (
-      <Benchmarks />
+      <Benchmarks
+        thirtyDaysReceived={this.state.thirtyDaysReceived}
+        thirtyDaysSolved={this.state.thirtyDaysSolved}
+        todayReceived={this.state.todayReceived}
+      />
     );
   }
 

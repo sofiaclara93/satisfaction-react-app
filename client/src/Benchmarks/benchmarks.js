@@ -12,13 +12,13 @@ class Benchmarks extends Component {
         <li>
           <p className="today">Today</p>
           <p className="today-value">
-            #
+            {this.props.todayReceived}
           </p>
         </li>
         <li>
           <p className="thirtyday">30 Days</p>
           <p className="thirtyday-value">
-            #
+            {this.props.thirtyDaysReceived}
           </p>
         </li>
       </ul>
@@ -40,7 +40,7 @@ class Benchmarks extends Component {
           <li>
             <p className="thirtyday">30 Days</p>
             <p className="thirtyday-value">
-              #
+              {this.props.thirtyDaysSolved}
             </p>
           </li>
         </ul>

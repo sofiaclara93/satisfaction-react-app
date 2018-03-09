@@ -9,7 +9,7 @@ renderRating() {
   return(
     <div className="sat-percentage">
       <h3>Customer Satisfaction</h3>
-      <div className="score">100%</div>
+      <div className="score">{this.props.score + "%"}</div>
     </div>
   );
 }
@@ -36,7 +36,7 @@ renderSummary() {
         </li>
         <li>
           <p className="metric-score">
-            {this.props.responseRate}
+            {this.props.responseRate + "%"}
           </p>
           <p className="metric">
             Response Rate
