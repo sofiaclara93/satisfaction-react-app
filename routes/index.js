@@ -37,7 +37,7 @@ var thirtyDayUnixCode = new Date(thirtyDaysAgo).getTime() / 1000
 var todayDateUnixCode = new Date(todayDate).getTime() / 1000 // gives time for today at midnight
 var todayUnixCode = new Date(rightNow).getTime() / 1000 //gives time now
 var dayAgoUnixCode = new Date(dayAgo).getTime() / 1000
-
+console.log(thirtyDayUnixCode);
 
 const benchmarksOptions = {
     url: 'https://chartbeat.zendesk.com/api/v2/satisfaction_ratings.json?per_page=1&include=statistics&score=received&start_time='+ thirtyDayUnixCode,
