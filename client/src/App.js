@@ -16,7 +16,8 @@ class App extends Component {
       score: "0",
       thirtyDaysSolved: "0",
       thirtyDaysReceived: "0",
-      todayReceived: "0"
+      todayReceived: "0",
+      todaySolved: "0"
     }
   }
 
@@ -52,7 +53,6 @@ class App extends Component {
         return response.json();
       })
       .then(responseJson => {
-        debugger;
         this.setState({
           thirtyDaysReceived: responseJson
         });
@@ -83,9 +83,23 @@ class App extends Component {
         return response.json();
       })
       .then(responseJson => {
-        debugger;
         this.setState({
           todayReceived: responseJson
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  getTodaySolved = () => {
+    fetch('/today-solved')
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        this.setState({
+          todaySolved: responseJson
         });
       })
       .catch(err => {
@@ -117,11 +131,13 @@ class App extends Component {
     this.getThirtyDaysSolved();
     this.getThirtyDaysReceived();
     this.getTodayReceived();
+    this.getTodaySolved();
     return (
       <Benchmarks
         thirtyDaysReceived={this.state.thirtyDaysReceived}
         thirtyDaysSolved={this.state.thirtyDaysSolved}
         todayReceived={this.state.todayReceived}
+        todaySolved={this.state.todaySolved}
       />
     );
   }

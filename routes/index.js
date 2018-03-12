@@ -9,13 +9,15 @@ var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1;
 var yyyy = today.getFullYear();
-var hh = today.getHours();
+var hh = today.getUTCHours();
 var min = today.getMinutes();
 if(dd<10){dd='0'+dd};
 if(mm<10){mm='0'+mm};
 if(min<10){min='0'+min}
+var onedayAgo = dd -1;
+if (onedayAgo<10){onedayAgo='0'+onedayAgo}
 var todayDate = yyyy+'-'+mm+'-'+dd;
-var hourAgo = yyyy + '-' + mm + "-" + dd + "T" + hh + ":00:00"
+var dayAgo = yyyy + '-' + mm + "-" + onedayAgo + "T" + hh + ":00:00"
 var rightNow = yyyy + '-' + mm + "-" + dd + "T" + hh + ":" + min + ":00"
 
 // gets 30 days ago as string
@@ -34,9 +36,8 @@ var thirtyDaysAgo = yyyy2+'-'+mm2+'-'+dd2;
 var thirtyDayUnixCode = new Date(thirtyDaysAgo).getTime() / 1000
 var todayDateUnixCode = new Date(todayDate).getTime() / 1000 // gives time for today at midnight
 var todayUnixCode = new Date(rightNow).getTime() / 1000 //gives time now
-var hourAgoUnixCode = new Date(hourAgo).getTime() / 1000
+var dayAgoUnixCode = new Date(dayAgo).getTime() / 1000
 
-console.log('https://chartbeat.zendesk.com/api/v1/stats/summation/account/0/ticket_stats_by_account/created_count?start=' + hourAgoUnixCode + '&end='+ todayUnixCode + '&interval=3600')
 
 const benchmarksOptions = {
     url: 'https://chartbeat.zendesk.com/api/v2/satisfaction_ratings.json?per_page=1&include=statistics&score=received&start_time='+ thirtyDayUnixCode,
@@ -63,14 +64,20 @@ const thirtydaySolvedOptions = {
 };
 
 const todayReceivedOptions = {
-    url: 'https://chartbeat.zendesk.com/api/v1/stats/summation/account/0/ticket_stats_by_account/created_count?start=' + hourAgoUnixCode + '&end='+ todayUnixCode + '&interval=3600',
+    url: 'https://chartbeat.zendesk.com/api/v1/stats/summation/account/0/ticket_stats_by_account/created_count?start=' + dayAgoUnixCode + '&end='+ todayUnixCode + '&interval=3600',
     method: 'GET',
     headers: {
         "Authorization": auth
     }
 };
 
-
+const todaySolvedOptions = {
+    url: 'https://chartbeat.zendesk.com/api/v1/stats/summation/account/0/ticket_stats_by_account/solve_count?start=' + dayAgoUnixCode + '&end='+ todayUnixCode + '&interval=3600',
+    method: 'GET',
+    headers: {
+        "Authorization": auth
+    }
+};
 
 /* GET 30 day benchmarks. */
 router.get('/benchmarks', function(req, res, next) {
@@ -112,8 +119,20 @@ router.get('/thirty-days-solved', function(req, res, next) {
 });
 
 /* GET today received tickets. */
-    router.get('/today-received', function(req, res, next) {
+router.get('/today-received', function(req, res, next) {
   request(todayReceivedOptions, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // var json = JSON.parse(body);
+                res.json(JSON.parse(body));
+            } else {
+                console.log("There was an error: ") + response.statusCode;
+                console.log(body);
+            }
+        });
+});
+
+router.get('/today-solved', function(req, res, next) {
+  request(todaySolvedOptions, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 // var json = JSON.parse(body);
                 res.json(JSON.parse(body));

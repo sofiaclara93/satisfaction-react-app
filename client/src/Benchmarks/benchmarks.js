@@ -34,7 +34,7 @@ class Benchmarks extends Component {
           <li>
             <p className="today">Today</p>
             <p className="today-value">
-              #
+              {this.props.todaySolved}
             </p>
           </li>
           <li>
