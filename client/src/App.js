@@ -17,12 +17,13 @@ class App extends Component {
       thirtyDaysSolved: "0",
       thirtyDaysReceived: "0",
       todayReceived: "0",
-      todaySolved: "0"
+      todaySolved: "0",
+      comments: []
     }
   }
 
 
-  getGoodRatings = () => {
+  getRatings = () => {
     fetch('/benchmarks')
       .then(response => {
         return response.json();
@@ -100,9 +101,44 @@ class App extends Component {
       });
   }
 
+  getComments = () => {
+    fetch('/comments')
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        var satRatings = responseJson.satisfaction_ratings;
+        var comments = [];
+        satRatings.forEach(function(rating){
+          comments.push(rating.comment);
+        });
+        if (responseJson.next_page != null){
+          fetch('/comments-page-2')
+            .then(response => {
+              return response.json();
+            })
+            .then(responseJson => {
+              var PageTwoSatRatings = responseJson.satisfaction_ratings;
+              PageTwoSatRatings.forEach(function(rating){
+                comments.push(rating.comment);
+              });
+            })
+            .catch(err => {
+              console.error(err);
+            });
+        }
+        this.setState({
+          comments: comments
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
 
   renderRating(){
-    this.getGoodRatings();
+    this.getRatings();
 
     return (
       <Rating
@@ -115,6 +151,7 @@ class App extends Component {
   }
 
   renderComments(){
+    this.getComments();
     return (
       <Comments />
     );

@@ -16,9 +16,9 @@ if(mm<10){mm='0'+mm};
 if(min<10){min='0'+min}
 var onedayAgo = dd -1;
 if (onedayAgo<10){onedayAgo='0'+onedayAgo}
-var todayDate = yyyy+'-'+mm+'-'+dd;
-var dayAgo = yyyy + '-' + mm + "-" + onedayAgo + "T" + hh + ":00:00"
-var rightNow = yyyy + '-' + mm + "-" + dd + "T" + hh + ":" + min + ":00"
+var todayDate = yyyy+'-'+mm+'-'+dd; //gets today's date
+var dayAgo = yyyy + '-' + mm + "-" + onedayAgo + "T" + hh + ":00:00" //gets 24 hours ago
+var rightNow = yyyy + '-' + mm + "-" + dd + "T" + hh + ":" + min + ":00" //gets time right now
 
 // gets 30 days ago as string
 var now = new Date();
@@ -32,12 +32,21 @@ if(mm2<10){mm2='0'+mm2};
 var thirtyDaysAgo = yyyy2+'-'+mm2+'-'+dd2;
 
 
+var priorday = new Date();
+priorday.setDate(now.getDate()-60);
+var dd3 = priorday.getDate();
+var mm3 = priorday.getMonth()+1;
+var yyyy3 = priorday.getFullYear();
+if(dd3<10){dd3='0'+dd3};
+if(mm3<10){mm3='0'+mm3};
+var sixtyDaysAgo = yyyy3+'-'+mm3+'-'+dd3;
+
 
 var thirtyDayUnixCode = new Date(thirtyDaysAgo).getTime() / 1000
 var todayDateUnixCode = new Date(todayDate).getTime() / 1000 // gives time for today at midnight
 var todayUnixCode = new Date(rightNow).getTime() / 1000 //gives time now
 var dayAgoUnixCode = new Date(dayAgo).getTime() / 1000
-console.log(thirtyDayUnixCode);
+var sixtyDayUnixCode = new Date(sixtyDaysAgo).getTime() / 1000
 
 const benchmarksOptions = {
     url: 'https://chartbeat.zendesk.com/api/v2/satisfaction_ratings.json?per_page=1&include=statistics&score=received&start_time='+ thirtyDayUnixCode,
@@ -77,6 +86,23 @@ const todaySolvedOptions = {
     headers: {
         "Authorization": auth
     }
+};
+
+const commentsOptions = {
+  url: 'https://chartbeat.zendesk.com/api/v2/satisfaction_ratings.json?score=good_with_comment&start_time=' + sixtyDayUnixCode,
+  method: 'GET',
+  headers: {
+      "Authorization": auth
+  }
+};
+
+
+const commentsTwoOptions = {
+  url: 'https://chartbeat.zendesk.com/api/v2/satisfaction_ratings.json?page=2&score=good_with_comment&start_time=' + sixtyDayUnixCode,
+  method: 'GET',
+  headers: {
+      "Authorization": auth
+  }
 };
 
 /* GET 30 day benchmarks. */
@@ -143,5 +169,28 @@ router.get('/today-solved', function(req, res, next) {
         });
 });
 
+router.get('/comments', function(req, res, next) {
+  request(commentsOptions, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // var json = JSON.parse(body);
+                res.json(JSON.parse(body));
+            } else {
+                console.log("There was an error: ") + response.statusCode;
+                console.log(body);
+            }
+        });
+});
+
+router.get('/comments-page-2', function(req, res, next) {
+  request(commentsTwoOptions, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // var json = JSON.parse(body);
+                res.json(JSON.parse(body));
+            } else {
+                console.log("There was an error: ") + response.statusCode;
+                console.log(body);
+            }
+        });
+});
 
 module.exports = router;
