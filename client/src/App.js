@@ -22,6 +22,28 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    this.getRatings();
+    this.getComments();
+    this.getThirtyDaysSolved();
+    this.getThirtyDaysReceived();
+    this.getTodayReceived();
+    this.getTodaySolved();
+    this.intervalId = window.setInterval(() => {
+      this.getRatings();
+      this.getComments();
+      this.getThirtyDaysSolved();
+      this.getThirtyDaysReceived();
+      this.getTodayReceived();
+      this.getTodaySolved();
+    }, 3600000)
+
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.intervalId);
+  }
+
 
   getRatings = () => {
     fetch('/benchmarks')
@@ -137,8 +159,8 @@ class App extends Component {
   }
 
 
+
   renderRating(){
-    this.getRatings();
 
     return (
       <Rating
@@ -151,17 +173,16 @@ class App extends Component {
   }
 
   renderComments(){
-    this.getComments();
+
     return (
-      <Comments />
+      <Comments
+      comments={this.state.comments}
+    />
     );
   }
 
   renderBenchmarks(){
-    this.getThirtyDaysSolved();
-    this.getThirtyDaysReceived();
-    this.getTodayReceived();
-    this.getTodaySolved();
+
     return (
       <Benchmarks
         thirtyDaysReceived={this.state.thirtyDaysReceived}
