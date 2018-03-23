@@ -2,39 +2,51 @@ import React, { Component, PropTypes } from 'react';
 import './comments.css';
 
 class Comments extends Component {
+
   constructor(props){
     super(props);
     this.state = {
-      comments: this.props.comments,
-      comment: " "
+      currentCommentIndex: 0,
+      comments: props.comments
     }
 
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps.comments)
+    if(this.props.comments !== nextProps.comments){
+      this.setState({
+        comments: nextProps.comments,
+        currentCommentIndex: 0
+      });
+    }
+    // if comments change, replace comments in state and select new currentCommentIndex
+
+  }
+
   componentDidMount(){
-    this.shuffleComments();
+    this.intervalId = window.setInterval(() => {
+      var i = Math.floor(Math.random() * Math.floor(this.state.comments.length));
+      if(i > this.state.comments.length){
+        i = 0;
+      }
+      this.setState({
+        currentCommentIndex: i
+      })
+    }, 10000)
 
   }
 
   componentWillUnmount(){
 
   }
-  shuffleComments = () => {
 
 
-  }
-
-  renderComments() {
-    return(
-      <div>"The Support of Alicia was great. But I was still sad, that we didnt receive any information about the leave of Blake Liut and the new assigned account manager Krista. I assume this should be part of the service for your customers to keep them updated about changes which affects their contracts and support. Thanks a lot, Eman"</div>
-      // this.getComments()
-    );
-  }
 
   render(){
     return(
       <div className="comments-block">
-        {this.renderComments()}
+        <div>{this.state.comments[this.state.currentCommentIndex]}</div>
       </div>
     );
   }

@@ -10,6 +10,7 @@ ul {
   border-right: 1px solid #ccc;
   padding: 0 3%;
   height: 75px;
+  border-color: #ff8c3c;
 }
 
 li:last-child {

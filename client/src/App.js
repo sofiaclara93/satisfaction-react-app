@@ -44,7 +44,6 @@ class App extends Component {
     window.clearInterval(this.intervalId);
   }
 
-
   getRatings = () => {
     fetch('/benchmarks')
       .then(response => {
