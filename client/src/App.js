@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Fullscreen from 'react-full-screen';
 import Rating from './Rating/rating';
 import Comments from './Comments/comments';
 import Benchmarks from './Benchmarks/benchmarks';
@@ -18,7 +19,8 @@ class App extends Component {
       thirtyDaysReceived: "0",
       todayReceived: "0",
       todaySolved: "0",
-      comments: []
+      comments: [],
+      isFull: false
     }
   }
 
@@ -157,6 +159,9 @@ class App extends Component {
       });
   }
 
+  goFull = () => {
+    this.setState({ isFull: true });
+  }
 
 
   renderRating(){
@@ -194,16 +199,26 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div class="row">
-          <div class="col s12 m4 l3 z-depth-2 center-align">
-             {this.renderBenchmarks()}
+      <div className="App body">
+        <button onClick={this.goFull}>
+          X
+        </button>
+
+        <Fullscreen
+          enabled={this.state.isFull}
+          onChange={isFull => this.setState({isFull})}
+        >
+          <div class="row body">
+            <div class="col s12 m4 l3 z-depth-2 center-align">
+               {this.renderBenchmarks()}
+            </div>
+            <div class="col s12 m8 l9 center-align performance">
+              {this.renderRating()}
+              {this.renderComments()}
+            </div>
           </div>
-          <div class="col s12 m8 l9 center-align">
-            {this.renderRating()}
-            {this.renderComments()}
-          </div>
-        </div>
+        </Fullscreen>
+
       </div>
     );
   }

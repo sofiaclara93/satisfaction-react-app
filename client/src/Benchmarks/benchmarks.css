@@ -27,14 +27,22 @@ li:last-child {
 }
 
 .tickets-received {
-  margin-top: 70px;
+  margin-top: 30%;
 }
 
 .tickets-solved {
   margin-top: 45%;
-  padding-bottom: 68%;
+  padding-bottom: 60%;
 }
 
 div.row {
   margin-bottom: 0;
+}
+
+.fullscreen-enabled .tickets-received {
+  margin-top: 45%;
+}
+
+.fullscreen-enabled .tickets-solved {
+  margin-top: 75%;
 }

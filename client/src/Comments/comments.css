@@ -6,3 +6,7 @@
   margin-right: 10%;
   font-weight: lighter;
 }
+
+.fullscreen-enabled .comments-block {
+  margin-top: 10%;
+}

@@ -13,14 +13,13 @@ class Comments extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(nextProps.comments)
     if(this.props.comments !== nextProps.comments){
       this.setState({
         comments: nextProps.comments,
         currentCommentIndex: 0
       });
     }
-    // if comments change, replace comments in state and select new currentCommentIndex
+
 
   }
 

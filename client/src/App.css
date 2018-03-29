@@ -1,9 +1,10 @@
-body {
+.body {
   background-color: #143250;
   /* background-color: #1F4564; */
-  font-family: "Balto Web",sans-serif;
+  font-family: 'Montserrat', sans-serif;
   /* font-family: proxima-nova,Helvetica Neue,Helvetica,Arial,sans-serif; */
-letter-spacing: .05rem;
+  letter-spacing: .05rem;
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -11,10 +12,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h3 {
-  font-weight: 70;
+  font-weight: lighter;
 }
 
 .z-depth-2{
   background-color: rgba(15,41,68,.95);
+  height: 100%;
 
+}
+
+.performance{
+  margin-top: 2%;
+}
+
+button {
+  float: right;
+  background-color: unset;
+  border: unset;
+}
+
+.fullscreen-enabled button:active{
+  background-color: yellow;
 }
