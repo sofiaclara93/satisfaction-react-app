@@ -1,0 +1,48 @@
+ul {
+  list-style: none;
+  justify-content: space-between;
+  margin-left: -1px;
+  color: #D9EDFB;
+  font-weight: lighter;
+}
+
+.received-list>li, .solved-list>li {
+  display: inline-block;
+  border-right: 1px solid #ccc;
+  padding: 0 7%;
+  height: 85px;
+  border-color: #ff8c3c;
+}
+
+li:last-child {
+  border: 0;
+}
+
+.bench-header {
+  font-size: 25px;
+}
+
+.today, .thirtyday {
+  font-weight: lighter;
+}
+
+.tickets-received {
+  margin-top: 30%;
+}
+
+.tickets-solved {
+  margin-top: 45%;
+  padding-bottom: 60%;
+}
+
+div.row {
+  margin-bottom: 0;
+}
+
+.fullscreen-enabled .tickets-received {
+  margin-top: 45%;
+}
+
+.fullscreen-enabled .tickets-solved {
+  margin-top: 75%;
+}
