@@ -32,7 +32,11 @@ class Comments extends Component {
       this.setState({
         currentCommentIndex: i
       })
-    }, 10000)
+      var div = this.refs.comments
+      if(this.state.comments[this.state.currentCommentIndex].length > 1){
+  
+      }
+    }, 15000)
 
   }
 
@@ -44,7 +48,7 @@ class Comments extends Component {
 
   render(){
     return(
-      <div className="comments-block">
+      <div className="comments-block" ref="comments">
         <div>{this.state.comments[this.state.currentCommentIndex]}</div>
       </div>
     );

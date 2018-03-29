@@ -10,13 +10,13 @@ class Benchmarks extends Component {
       <h3 className="bench-header">Tickets Received</h3>
       <ul className="received-list">
         <li>
-          <p className="today">Today</p>
+          <p className="today">TODAY</p>
           <p className="today-value">
             {this.props.todayReceived}
           </p>
         </li>
         <li>
-          <p className="thirtyday">30 Days</p>
+          <p className="thirtyday">30 DAYS</p>
           <p className="thirtyday-value">
             {this.props.thirtyDaysReceived}
           </p>
@@ -32,13 +32,13 @@ class Benchmarks extends Component {
         <h3 className="bench-header">Tickets Solved</h3>
         <ul className="solved-list">
           <li>
-            <p className="today">Today</p>
+            <p className="today">TODAY</p>
             <p className="today-value">
               {this.props.todaySolved}
             </p>
           </li>
           <li>
-            <p className="thirtyday">30 Days</p>
+            <p className="thirtyday">30 DAYS</p>
             <p className="thirtyday-value">
               {this.props.thirtyDaysSolved}
             </p>

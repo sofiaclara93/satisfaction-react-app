@@ -19,27 +19,27 @@ renderSummary() {
     <div className="metrics-summary">
       <ul className="metrics-list">
         <li>
-          <p className="metric-score">
-            {this.props.goodRating}
-          </p>
           <p className="metric">
             Good Ratings
           </p>
+          <p className="metric-score">
+            {this.props.goodRating}
+          </p>
         </li>
         <li>
-          <p className="metric-score">
-            {this.props.badRating}
-          </p>
           <p className="metric">
             Bad Ratings
           </p>
+          <p className="metric-score">
+            {this.props.badRating}
+          </p>
         </li>
         <li>
-          <p className="metric-score">
-            {this.props.responseRate + "%"}
-          </p>
           <p className="metric">
             Response Rate
+          </p>
+          <p className="metric-score">
+            {this.props.responseRate + "%"}
           </p>
         </li>
       </ul>

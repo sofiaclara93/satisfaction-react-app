@@ -11,10 +11,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #FFF;
 }
 
-h3 {
-  font-weight: lighter;
-}
-
 .z-depth-2{
   background-color: rgba(15,41,68,.95);
   height: 100%;
@@ -22,15 +18,10 @@ h3 {
 }
 
 .performance{
-  margin-top: 2%;
+  margin-top: -1%;
 }
 
 button {
   float: right;
-  background-color: unset;
   border: unset;
-}
-
-.fullscreen-enabled button:active{
-  background-color: yellow;
 }

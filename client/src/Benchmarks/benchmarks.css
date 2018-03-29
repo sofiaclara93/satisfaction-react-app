@@ -8,10 +8,10 @@ ul {
 
 .received-list>li, .solved-list>li {
   display: inline-block;
-  border-right: 1px solid #ccc;
-  padding: 0 7%;
-  height: 85px;
-  border-color: #ff8c3c;
+  border-right: 3px solid #ccc;
+  padding: 0 32px 0 32px;
+  height: 107px;
+  border-color: #2D5D7E;
 }
 
 li:last-child {
@@ -22,8 +22,22 @@ li:last-child {
   font-size: 25px;
 }
 
-.today, .thirtyday {
-  font-weight: lighter;
+.fullscreen-enabled .today {
+  font-size: 20px;
+}
+
+.fullscreen-enabled .thirtyday {
+  font-size: 20px;
+}
+
+.fullscreen-enabled .today-value  {
+  margin-top: -15%;
+  font-size: 45px;
+}
+
+.fullscreen-enabled .thirtyday-value{
+  margin-top: -15%;
+  font-size: 45px;
 }
 
 .tickets-received {
@@ -40,9 +54,9 @@ div.row {
 }
 
 .fullscreen-enabled .tickets-received {
-  margin-top: 45%;
+  margin-top: 40%;
 }
 
 .fullscreen-enabled .tickets-solved {
-  margin-top: 75%;
+  margin-top: 70%;
 }
