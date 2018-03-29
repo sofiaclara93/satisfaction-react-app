@@ -200,7 +200,7 @@ class App extends Component {
   render() {
     return (
       <div className="App body">
-        <button onClick={this.goFull}>
+        <button class="transparent white-text" onClick={this.goFull}>
           X
         </button>
 

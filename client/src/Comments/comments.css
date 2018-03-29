@@ -5,8 +5,11 @@
   margin-left: 10%;
   margin-right: 10%;
   font-weight: lighter;
+  font-size: 20px;
+  color: #ff8c3c;
 }
 
 .fullscreen-enabled .comments-block {
-  margin-top: 10%;
+  margin-top: 8%;
+  font-size: 25px;
 }
