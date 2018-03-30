@@ -7,7 +7,8 @@ class Comments extends Component {
     super(props);
     this.state = {
       currentCommentIndex: 0,
-      comments: props.comments
+      comments: props.comments,
+      class: "not-active"
     }
 
   }
@@ -32,24 +33,29 @@ class Comments extends Component {
       this.setState({
         currentCommentIndex: i
       })
-      var div = this.refs.comments
-      if(this.state.comments[this.state.currentCommentIndex].length > 1){
-  
+      if(this.state.comments.length > 0 && this.state.comments[i].length > 100){
+        this.setState({
+          class: "active-comment"
+        })
+      } else {
+        this.setState({
+          class: "non-active"
+        })
       }
     }, 15000)
 
   }
 
   componentWillUnmount(){
-
+      window.clearInterval(this.intervalId);
   }
 
 
 
   render(){
     return(
-      <div className="comments-block" ref="comments">
-        <div>{this.state.comments[this.state.currentCommentIndex]}</div>
+      <div className="comments-block">
+        <div className={this.state.class}>"{this.state.comments[this.state.currentCommentIndex]}"</div>
       </div>
     );
   }

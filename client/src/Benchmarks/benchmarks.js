@@ -55,6 +55,9 @@ class Benchmarks extends Component {
       <div className="benchmarks-bar">
         {this.renderReceived()}
         {this.renderSolved()}
+        <div className="credit">
+          Made by <span className="team-name">Chartcorps</span>
+        </div>
       </div>
     );
   }

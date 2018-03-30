@@ -2,7 +2,7 @@ ul {
   list-style: none;
   justify-content: space-between;
   margin-left: -1px;
-  color: #D9EDFB;
+  color: #FFF;
   font-weight: lighter;
 }
 
@@ -22,31 +22,41 @@ li:last-child {
   font-size: 25px;
 }
 
+.today-value, .thirtyday-value {
+  font-size: 45px;
+  margin-top: 10%;
+}
+
 .fullscreen-enabled .today {
   font-size: 20px;
+  margin-left: -25%;
+  margin-top: -1%;
 }
 
 .fullscreen-enabled .thirtyday {
   font-size: 20px;
+  margin-right: -25%;
 }
 
 .fullscreen-enabled .today-value  {
-  margin-top: -15%;
+  margin-top: -25%;
   font-size: 45px;
+  margin-left: -25%;
 }
 
 .fullscreen-enabled .thirtyday-value{
-  margin-top: -15%;
+  margin-top: -20%;
   font-size: 45px;
+  margin-right: -25%;
 }
 
 .tickets-received {
-  margin-top: 30%;
+  margin-top: 20%;
 }
 
 .tickets-solved {
   margin-top: 45%;
-  padding-bottom: 60%;
+  padding-bottom: 49%;
 }
 
 div.row {
@@ -54,9 +64,24 @@ div.row {
 }
 
 .fullscreen-enabled .tickets-received {
-  margin-top: 40%;
+  margin-top: 30%;
 }
 
 .fullscreen-enabled .tickets-solved {
-  margin-top: 70%;
+  margin-top: 40%;
+}
+
+.team-name {
+  color: #ff8c3c;
+}
+
+.credit {
+  float: left;
+  opacity: 0.75;
+  color: #D9EDFB;
+  font-size: 15px;
+}
+
+.fullscreen-enabled .credit{
+  margin-top: 18%;
 }

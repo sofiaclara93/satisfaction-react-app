@@ -160,9 +160,17 @@ class App extends Component {
   }
 
   goFull = () => {
-    this.setState({ isFull: true });
+    this.setState({
+      isFull: true
+     });
   }
 
+
+  goBack = () => {
+    this.setState({
+      isFull: false
+  });
+  }
 
   renderRating(){
 
@@ -200,14 +208,16 @@ class App extends Component {
   render() {
     return (
       <div className="App body">
-        <button class="transparent white-text" onClick={this.goFull}>
+        <button class="transparent amber-text text-darken-3" onClick={this.goFull}>
           X
         </button>
-
         <Fullscreen
           enabled={this.state.isFull}
           onChange={isFull => this.setState({isFull})}
         >
+          <button className="escape-full transparent amber-text text-darken-3" onClick={this.goBack}>
+            X
+          </button>
           <div class="row body">
             <div class="col s12 m4 l3 z-depth-2 center-align">
                {this.renderBenchmarks()}
