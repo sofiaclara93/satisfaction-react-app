@@ -6,6 +6,10 @@ ul {
   font-weight: lighter;
 }
 
+.benchmarks-bar {
+  height: 100px
+}
+
 .received-list>li, .solved-list>li {
   display: inline-block;
   border-right: 3px solid #ccc;
@@ -19,34 +23,48 @@ li:last-child {
 }
 
 .bench-header {
-  font-size: 25px;
+  font-size: 1.5vw;
+  /* font-size: 25px; */
 }
 
 .today-value, .thirtyday-value {
   font-size: 45px;
   margin-top: 10%;
 }
+.today, .thirtyday {
+  color: #ff8c3c;
+  opacity: 0.75;
+  }
 
 .fullscreen-enabled .today {
-  font-size: 20px;
+  font-size: 1.57vw;
+  /* font-size: 20px; */
   margin-left: -25%;
   margin-top: -1%;
+  color: #ff8c3c;
+  opacity: 0.75;
 }
 
+
 .fullscreen-enabled .thirtyday {
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 1.57vw;
   margin-right: -25%;
+  color: #ff8c3c;
+  opacity: 0.75;
 }
 
 .fullscreen-enabled .today-value  {
   margin-top: -25%;
-  font-size: 45px;
+  font-size: 1.75vw;
+  /* font-size: 45px; */
   margin-left: -25%;
 }
 
 .fullscreen-enabled .thirtyday-value{
   margin-top: -20%;
-  font-size: 45px;
+  font-size: 1.75vw;
+  /* font-size: 45px; */
   margin-right: -25%;
 }
 
@@ -83,5 +101,7 @@ div.row {
 }
 
 .fullscreen-enabled .credit{
-  margin-top: 18%;
+  margin-top: 15%;
+  margin-left: 5%;
+  font-size: 1.3vw;
 }

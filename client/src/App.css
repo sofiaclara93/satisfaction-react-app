@@ -1,9 +1,11 @@
-.body {
+html, .App, .body {
   background-color: #143250;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: .05rem;
   height: 100%;
 }
+
+
 
 h1, h2, h3, h4, h5, h6 {
   color: #D9EDFB;
@@ -17,6 +19,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .performance{
   margin-top: -1%;
+  height: 100%
 }
 
 button {

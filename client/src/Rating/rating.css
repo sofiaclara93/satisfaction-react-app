@@ -32,11 +32,28 @@ li:last-child {
 }
 
 .fullscreen-enabled .sat-ratings {
-    margin-top: -4%;
+    margin-top: -7%;
 }
 
 .fullscreen-enabled .sat-title {
-  margin-top: 10%;
+  font-size: 2.5vw;
+  margin-top: 15vh;
+}
+
+.fullscreen-enabled .score {
+  font-size: 10.5vw;
+}
+
+.fullscreen-enabled .metric-score {
+  font-size: 4vw;
+}
+
+.fullscreen-enabled .metric {
+  font-size: 1.5vw;
+}
+
+.fullscreen-enabled .metrics-summary {
+  padding-top: 8%;
 }
 
 .sat-title {
