@@ -22,8 +22,21 @@ if(mm<10){mm='0'+mm};
 if(min<10){min='0'+min}
 var onedayAgo = dd -1;
 if (onedayAgo<10){onedayAgo='0'+onedayAgo}
+if (onedayAgo <10 && onedayAgo === '00')
+  var yesterdayMM = mm - 1;
+  {
+    if (mm === '04' || mm === '06' || mm === '09' || mm === '11'){
+      onedayAgo='30'
+    }
+    else if (mm === '02'){
+      onedayAgo='31'
+    } else {
+      onedayAgo='30'
+    }
+  if(yesterdayMM<10){yesterdayMM='0'+yesterdayMM};
+}
 var todayDate = yyyy+'-'+mm+'-'+dd; //gets today's date
-var dayAgo = yyyy + '-' + mm + "-" + onedayAgo + "T" + hh + ":00:00" //gets 24 hours ago
+var dayAgo = yyyy + '-' + yesterdayMM + "-" + onedayAgo + "T" + hh + ":00:00" //gets 24 hours ago
 var rightNow = yyyy + '-' + mm + "-" + dd + "T" + hh + ":" + min + ":00" //gets time right now
 
 // gets 30 days ago as string
@@ -157,6 +170,7 @@ app.get('/today-received', function(req, res, next) {
                 // var json = JSON.parse(body);
                 res.json(JSON.parse(body));
             } else {
+              console.log(todayReceivedOptions);
                 console.log("There was an error: ") + response.statusCode;
                 console.log(body);
             }
