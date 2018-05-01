@@ -1,0 +1,14 @@
+{
+  "name": "sat-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "react-full-screen": "^0.2.2",
+    "request": "^2.85.0"
+  },"scripts": {
+      "start": "node index.js",
+      "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
+    }
+}

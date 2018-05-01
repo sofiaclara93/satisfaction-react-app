@@ -1,0 +1,27 @@
+.comments-block {
+  color: #D9EDFB;
+  margin-top: 8%;
+  margin-bottom: 8%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+.fullscreen-enabled .comments-block {
+  margin-top: 8%;
+  font-size: 2.75vh;
+  /* font-size: 25px; */
+}
+
+.fullscreen-enabled .active-comment {
+  margin-top: -4%;
+}
+
+.fullscreen-enabled .non-active {
+  margin-top: 15%;
+}
+
+.active-comment{
+  margin-top: -5%;
+}
