@@ -23,8 +23,8 @@ if(min<10){min='0'+min}
 var onedayAgo = dd -1;
 if (onedayAgo<10){onedayAgo='0'+onedayAgo}
 if (onedayAgo <10 && onedayAgo === '00')
-  var yesterdayMM = mm - 1;
   {
+    var yesterdayMM = mm - 1;
     if (mm === '04' || mm === '06' || mm === '09' || mm === '11'){
       onedayAgo='30'
     }
@@ -33,10 +33,14 @@ if (onedayAgo <10 && onedayAgo === '00')
     } else {
       onedayAgo='30'
     }
-  if(yesterdayMM<10){yesterdayMM='0'+yesterdayMM};
-}
+    if(yesterdayMM<10){yesterdayMM='0'+yesterdayMM}
+    var dayAgo = yyyy + '-' + yesterdayMM + "-" + onedayAgo + "T" + hh + ":00:00";
+  } else {
+    var dayAgo = yyyy + '-' + mm + "-" + onedayAgo + "T" + hh + ":00:00";
+  }
+  
 var todayDate = yyyy+'-'+mm+'-'+dd; //gets today's date
-var dayAgo = yyyy + '-' + yesterdayMM + "-" + onedayAgo + "T" + hh + ":00:00" //gets 24 hours ago
+
 var rightNow = yyyy + '-' + mm + "-" + dd + "T" + hh + ":" + min + ":00" //gets time right now
 
 // gets 30 days ago as string
